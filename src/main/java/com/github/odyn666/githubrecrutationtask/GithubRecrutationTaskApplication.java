@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GithubRecrutationtaskApplication {
+public class GithubRecrutationTaskApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GithubRecrutationtaskApplication.class, args);
+        SpringApplication.run(GithubRecrutationTaskApplication.class, args);
     }
 
 }

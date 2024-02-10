@@ -1,7 +1,6 @@
-package com.github.odyn666.githubrecrutationtask.mapper;
+package com.github.odyn666.githubrecrutationtask.dto;
 
 import com.github.odyn666.githubrecrutationtask.model.Branch;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

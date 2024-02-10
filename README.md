@@ -1,23 +1,92 @@
-# Getting Started
+# GitHub Recruitment Task
 
-### Reference Documentation
+This project is a Spring Boot application that interacts with the GitHub API to retrieve information about GitHub users, their repositories, and branches. It includes a service (`GitHubService`) for handling GitHub-related operations and a controller (`GitHubTaskController`) for exposing API endpoints.
 
-For further reference, please consider the following sections:
+### Rsponse format
+```json
+    {
+        "ownerLogin": "odyn666",
+        "branch": [
+            {
+                "name": "master",
+                "commit": {
+                    "sha": "25f119899b73620607ab12f36f5ed1e219f008a1"
+                }
+            }
+        ],
+        "repositoryName": "Memory_game"
+    }
+```
+```json
+ {
+  "ownerLogin": "odyn666",
+  "branch": [
+    {
+      "name": "dev",
+      "commit": {
+        "sha": "e98f0eb31f163d86c66aa671f5cd135dddd1c4c3"
+      }
+    },
+    {
+      "name": "entities",
+      "commit": {
+        "sha": "09f1c5a66a4722e26a647372666a5f157c0d3f3f"
+      }
+    },
+    {
+      "name": "master",
+      "commit": {
+        "sha": "f865792e83b614540b958cb04cd931e37205628b"
+      }
+    }
+  ],
+  "repositoryName": "SdaLibraryProject"
+}
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.2/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.2/maven-plugin/reference/html/#build-image)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#using.devtools)
-* [Spring Configuration Processor](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#appendix.configuration-metadata.annotation-processor)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#web)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
+```
 
-### Guides
+### Endpoints:
 
-The following guides illustrate how to use some features concretely:
+#### `GET /api/github/repositories`
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+- **Parameters:**
+    - `username` (query parameter) - GitHub username.
+    - `Accept` (request header) - Should be set to "application/json".
+
+- **Response:**
+    - Returns a list of GitHubDTOs containing information about repositories.
+
+- **Error Handling:**
+    - If the `Accept` header is not set to "application/json," it returns a `Bad Request` response.
+    - If the `username` header is not valid  it returns a `Not Found` response.
+
+## Configuration
+
+The application uses Spring `@Value` annotations for configuration. The following properties are defined:
+- `github.api.url.users`: GitHub API URL for user information.
+- `github.api.url.repos`: GitHub API URL for repository information.
+
+## Usage
+
+To use this application, make sure to configure the GitHub API properties and provide a valid GitHub API token.
+
+### Building and Running the Application 
+
+```bash
+# Build the application
+./mvnw clean install
+
+# Run the application
+./mvnw spring-boot:run
+```
+### Building and Running the Application from Jar
+```bash
+# cmd/powershell
+  java -jar .\githubRecrutationtask-0.0.1-SNAPSHOT.jar
+  #bash
+  java - jar ./githubRecrutationtask-0.0.1-SNAPSHOT.jar
+
+```
+### In current version you are able to make 60 request per hour
+### Token handling will be added in near future
 
