@@ -30,7 +30,7 @@ public class GitHubService {
     private RestTemplate restTemplate = new RestTemplate();
 
     public GitHubUser getGitHubUser(String username) {
-        String url = githubUsersApiUrl + "/users/" + username;
+        String url = githubUsersApiUrl + username;
             return restTemplate.getForObject(url, GitHubUser.class);
     }
 
