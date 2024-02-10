@@ -21,6 +21,7 @@ public class GitHubTaskController {
     private final GitHubService gitHubService;
 
 
+
     @GetMapping("/github/repositories")
     public ResponseEntity<?> getGitHubRepositories(
             @RequestParam String username,
@@ -28,7 +29,7 @@ public class GitHubTaskController {
     ) {
 
         if (!acceptHeader.equals("application/json")) {
-            throw new BadHeaderException(HttpStatus.BAD_REQUEST.value(), "Invalid Accept Header");
+            return new ResponseEntity<>(new BadHeaderException(HttpStatus.NOT_FOUND.value(), "INVALID ACCEPT HEADER"),HttpStatus.NOT_FOUND);
         }
 
         try {
