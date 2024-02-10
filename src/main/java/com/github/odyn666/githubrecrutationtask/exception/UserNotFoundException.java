@@ -3,7 +3,7 @@ package com.github.odyn666.githubrecrutationtask.exception;
 import lombok.Getter;
 
 @Getter
-public class UserNotFoundException extends RuntimeException {
+public class UserNotFoundException   {
    private final int status;
    private final String message;
 

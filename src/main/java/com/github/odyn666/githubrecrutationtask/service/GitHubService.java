@@ -3,11 +3,14 @@ package com.github.odyn666.githubrecrutationtask.service;
 import com.github.odyn666.githubrecrutationtask.dto.GitHubDTO;
 import com.github.odyn666.githubrecrutationtask.model.Branch;
 import com.github.odyn666.githubrecrutationtask.model.GitHubRepository;
+import com.github.odyn666.githubrecrutationtask.model.GitHubUser;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.stereotype.Service;
+
 
 import org.springframework.web.client.RestTemplate;
 
@@ -26,7 +29,10 @@ public class GitHubService {
     private String githubReposApiUrl;
     private RestTemplate restTemplate = new RestTemplate();
 
-
+    public GitHubUser getGitHubUser(String username) {
+        String url = githubUsersApiUrl + "/users/" + username;
+            return restTemplate.getForObject(url, GitHubUser.class);
+    }
 
     public List<GitHubDTO> getDTOs(String username) {
 

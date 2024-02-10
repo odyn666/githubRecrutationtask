@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GitHubTaskExceptionHandler {
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<String>handleUserNotFoundException(UserNotFoundException e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getStatus()+" "+e.getMessage());
-    }
+
 
     @ExceptionHandler(BadHeaderException.class)
     public ResponseEntity<String>handleBadHeaderException(BadHeaderException e){
